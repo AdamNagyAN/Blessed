@@ -1,0 +1,85 @@
+header .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 8vh;
+  width: 80%;
+  max-width: 1210px;
+  margin: 0 auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+header .navbar #toggle {
+  display: none;
+}
+
+header .navbar #logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+header .navbar nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+header .navbar .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  justify-self: flex-end;
+}
+
+header .navbar .nav-links .nav-link a {
+  position: relative;
+  color: rgba(43, 43, 43, 0.911);
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  margin: 0 5px;
+}
+
+header .navbar .nav-links .nav-link a::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  background-color: #141414;
+  bottom: -3px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+header .navbar .nav-links .nav-link a:hover:after {
+  width: 100%;
+}
+
+header .navbar .nav-links .nav-link a:hover {
+  color: #141414;
+}
+
+header .navbar #shopping_cart,
+header .navbar #toggle {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+header .navbar span {
+  background-color: #141414;
+  color: #8b8b8b;
+  padding: 1px 3px;
+  border-radius: 3px;
+}
