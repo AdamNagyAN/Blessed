@@ -1,0 +1,88 @@
+$primary-font: "Montserrat", sans-serif;
+$rounded-font: "Varela Round", sans-serif;
+
+$white: rgb(139, 139, 139);
+$lightGrey: rgba(43, 43, 43, 0.911);
+$darkGrey: rgb(20, 20, 20);
+
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  width: 80%;
+  display: flex;
+  .options {
+    h2 {
+      margin: 20px 30px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    h3 {
+      margin: 20px 30px;
+      text-transform: uppercase;
+      font-size: 0.6rem;
+      color: $lightGrey;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      margin: 10px 30px;
+      font-weight: 500;
+      color: $lightGrey;
+    }
+    hr {
+      height: 2px;
+      background-color: $lightGrey;
+      margin: 30px 0 0 30px;
+    }
+  }
+  .products {
+    margin-left: 30px;
+    width: 100%;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .product-card-container {
+      background-color: white;
+      margin: 15px;
+      .product-card-img-container {
+        width: 100%;
+        position: relative;
+        .product-card-img {
+          margin: 0 5%;
+          width: 90%;
+          object-fit: cover;
+        }
+        svg {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          background-color: white;
+          border-radius: 100%;
+          padding: 4px;
+          cursor: pointer;
+          fill: white;
+          transition: all 0.1s ease-in;
+          &:hover {
+            fill: black;
+          }
+        }
+      }
+      .product-card-info {
+        display: flex;
+        flex-direction: column;
+        span {
+          margin: 2px 0;
+        }
+        .name {
+          font-weight: bold;
+        }
+        .size {
+          font-weight: 200;
+        }
+      }
+    }
+  }
+}

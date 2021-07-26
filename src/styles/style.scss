@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Varela+Round&display=swap");
+
+$primary-font: "Montserrat", sans-serif;
+$rounded-font: "Varela Round", sans-serif;
+
+$white: rgb(139, 139, 139);
+$lightGrey: rgba(43, 43, 43, 0.911);
+$darkGrey: rgb(20, 20, 20);
+
+// GLOBAL
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 12px;
+  font-family: $primary-font;
+}
+a {
+  text-decoration: none;
+  color: $darkGrey;
+}
+// NAVBAR
+
+header {
+  .container {
+    margin: 0 auto;
+  }
+  .navbar {
+    display: flex;
+    height: 8vh;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    #toggle {
+      display: none;
+    }
+    #logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      justify-self: flex-end;
+      .nav-link {
+        a {
+          position: relative;
+          color: $lightGrey;
+          font-weight: 500;
+          text-transform: uppercase;
+          padding: 7px 10px;
+          margin: 0 5px;
+          &::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 0;
+            background-color: $darkGrey;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.2s ease-in;
+          }
+          &:hover:after {
+            width: 100%;
+          }
+          &:hover {
+            color: $darkGrey;
+          }
+        }
+      }
+    }
+    #shopping_cart,
+    #toggle {
+      margin: 0 20px;
+      cursor: pointer;
+    }
+    span {
+      background-color: $darkGrey;
+      color: $white;
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+  }
+}
+
+//SHOP
+
+@media only screen and (max-width: 600px) {
+  header .container {
+    overflow: hidden;
+    .navbar {
+      width: 90%;
+      position: relative;
+      flex-direction: column;
+      justify-content: center;
+      #toggle,
+      #shopping_cart {
+        display: block;
+        position: absolute;
+
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      .nav-links {
+        z-index: 9999;
+        background-color: white;
+        transform: translateX(-100%);
+        position: fixed;
+        top: 8vh;
+        left: 0;
+        flex-direction: column;
+        height: 92vh;
+        width: 70%;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.9rem;
+        transition: transform 0.4s ease-in;
+        &:hover:after {
+          width: 0;
+        }
+        &.open {
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
+}
