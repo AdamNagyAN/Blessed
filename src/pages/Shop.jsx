@@ -1,6 +1,9 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Product from '../components/Shop/Product'
 import '../styles/shop.scss'
+import { Link, useLocation } from 'react-router-dom'
+import * as queryString from 'querystring'
+
 const Shop = () => {
     const [list, setList] = useState([
         {
@@ -30,16 +33,20 @@ const Shop = () => {
             price: '10$',
             tags: ['t-shirt', 'basic']
         }
-    ])
+    ]);
+    const location = useLocation();
+    console.log(location.search.split('?'))
+    
+
     return (
         <div className="container">
             <div className="options">
                 <h2>Categories</h2>
                 <ul>
-                    <li><a href="#">All products</a></li>
-                    <li><a href="#">T-Shirts</a></li>
-                    <li><a href="#">Trausers</a></li>
-                    <li><a href="#">Shoes</a></li>
+                    <li><Link to="/shop">All products</Link></li>
+                    <li><Link to="/shop">T-Shirts</Link></li>
+                    <li><Link to="/shop">Trausers</Link></li>
+                    <li><Link to="/shop">Shoes</Link></li>
                 </ul>
                 <hr />
                 <h2>Filter by</h2>
@@ -54,7 +61,6 @@ const Shop = () => {
             </div>
             <div className="products">
                 {list.map((item) => {
-                    console.log(item);
                     return (<Product {...item}/>)
                 })}
             </div>
