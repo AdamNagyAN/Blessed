@@ -29,7 +29,7 @@ header {
   }
   .navbar {
     display: flex;
-    height: 8vh;
+    height: 60px;
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
@@ -92,21 +92,29 @@ header {
   }
 }
 
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  width: 80%;
+}
 //SHOP
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   header .container {
+    margin: 0;
     overflow: hidden;
     .navbar {
-      width: 90%;
-      position: relative;
+      margin: 0;
+      width: 100%;
+      position: fixed;
+      background-color: white;
+      z-index: 9999;
       flex-direction: column;
       justify-content: center;
       #toggle,
       #shopping_cart {
         display: block;
         position: absolute;
-
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
@@ -117,10 +125,10 @@ header {
         background-color: white;
         transform: translateX(-100%);
         position: fixed;
-        top: 8vh;
+        top: 60px;
         left: 0;
         flex-direction: column;
-        height: 92vh;
+        height: calc(100% - 60px);
         width: 70%;
         justify-content: space-around;
         align-items: center;
@@ -134,5 +142,8 @@ header {
         }
       }
     }
+  }
+  .container {
+    margin: 70px auto;
   }
 }
