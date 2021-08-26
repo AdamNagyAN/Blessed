@@ -24,8 +24,8 @@ const Categories = () => {
 }
 
 const CategoryContainer = styled.div`
-    margin: 0 auto;
-    max-width: 1500px;
+    margin: 0 auto 15px auto;
+    max-width: 1200px;
     width: 100%;
     display: grid;
     grid-template-areas: "a b c";

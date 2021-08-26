@@ -1,8 +1,12 @@
 import { Switch, Route } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
+import Details from "./components/Details/Details";
+import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
 import GlobalStyle from './globalStyles';
+import './lib/Data'
 
 function App() {
   return (
@@ -10,12 +14,14 @@ function App() {
       <GlobalStyle />
       <Header />
       <Switch>
+        
         <Route path="/" exact component={Home} />
         <Route path="/shop" exact component={Shop} />
-        <Route path="/shop/:id">
-          <div className="container"><h2>asd</h2></div>
-        </Route>
+        <Route path="/cart" exact component={Cart} />
+        <Route path="/shop/:id" component={Details} />
+        <Route component={Home} />
       </Switch>
+      <Footer />
     </div>
   );
 }

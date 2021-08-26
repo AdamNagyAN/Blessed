@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { HeroDiv, Button } from './styles'
 const Hero = () => {
     return (

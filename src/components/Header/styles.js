@@ -105,7 +105,7 @@ export const NavLink = styled.li`
         }
 `
 
-export const SCart = styled.div`
+export const SCart = styled(Link)`
     margin: 0 20px;
     cursor: pointer;
     span {

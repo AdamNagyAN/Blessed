@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import Product from './Product'
-import './shop.scss'
+import styled from 'styled-components'
+// import './shop.scss'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { Container } from '../styles'
+import Loader from '../Loader'
+import { db } from '../../lib/Config'
 
 const Shop = () => {
     const [list, setList] = useState(null);
+
+
+    const fetchProducts = async (limit) =>{
+        await db.collection("products").onSnapshot((snapshop) => {
+            let documents = []
+            snapshop.forEach(doc => documents.push(...doc.data(), doc.id))
+            // console.log(documents)
+        })
+    }
+
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products')
-            .then(data => {
-                setList(data.data)
-                console.log(data.data);
+        const unsub = db.collection("products").onSnapshot(snap => {
+            let documents = []
+            snap.forEach(doc => {
+                documents.push({...doc.data(), id: doc.id})
             })
+        })
+
     }, [])
     
 
     return (
-        <div className="container">
+        <Container className='container'>
             <div className="options">
                 <h2>Categories</h2>
                 <ul>
@@ -36,11 +51,12 @@ const Shop = () => {
                     <li><Link to="/">L</Link></li>
                 </ul>
             </div>
-            <div className="products">
-                { list ? list.map((item) => (<Product key={item.id} id={item.id} name={item.title} price={item.price} image={item.image}/>)) : (<div className="loader">Loading...</div>)}
+            <div className="products" style={{position: 'relative'}}>
+                { list ? list.map((item) => (<Product key={item.id} id={item.id} name={item.name} price={item.price.formatted_with_symbol} image={item.media.source}/>)) : (<Loader />)}
             </div>
-        </div>
+        </Container>
     )
 }
+
 
 export default Shop

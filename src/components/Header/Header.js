@@ -21,7 +21,7 @@ const NavBar = () => {
                             <NavLink onClick={() => setNavbar(false)}><Link to="/register">Register</Link></NavLink>
                             <NavLink onClick={() => setNavbar(false)}><Link to="/login">Log in</Link></NavLink>
                         </NavLinks>
-                        <SCart style={{ right: "0px" }}>
+                        <SCart to='/cart' style={{ right: "0px" }}>
                             <img src={ShoppingCart} alt="shopping cart" />
                             <span>0</span>
                         </SCart>

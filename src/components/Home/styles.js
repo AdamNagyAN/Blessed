@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 const darkGrey = 'rgb(20, 20, 20)'
-const white = 'rgb(139, 139, 139)';
 
 export const HeroDiv = styled.div`
     position: relative;
