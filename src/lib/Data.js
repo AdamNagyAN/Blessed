@@ -1,4 +1,4 @@
-import { db } from './Config'
+// import { db } from './Config'
 const datas = [
     {
         Name: "Basic T-Shirt Black",

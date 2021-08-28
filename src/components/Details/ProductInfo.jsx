@@ -2,20 +2,17 @@ import React,{ useState } from 'react'
 import styled from 'styled-components'
 import { commerce } from '../../lib/commerce';
 
-const ProductInfo = ({ id, name, categories, description, price, variant_groups }) => {
+const ProductInfo = ({ id, name, price, description }) => {
 
     const [counter, setCounter] = useState(1)
 
-    const getDesc = () => {
-        return {__html: description}
-    }
 
 
     return (
         <InfoContainer>
             <Title>{name}</Title>
-            <Price>{price.formatted_with_symbol}</Price>
-            <Description dangerouslySetInnerHTML={getDesc()}></Description>
+            <Price>{price} UAH</Price>
+            <Description>{description}</Description>
             <CounterElement>
                 <button onClick={() => setCounter(prev => (prev>1 ? prev-1 : 1)) }>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +27,7 @@ const ProductInfo = ({ id, name, categories, description, price, variant_groups 
                     </svg>
                 </button>
             </CounterElement>
-            <Button onClick={() => commerce.cart.add(id, counter)}>Add to cart</Button>
+            <Button>Add to cart</Button>
         </InfoContainer>
     )
 }

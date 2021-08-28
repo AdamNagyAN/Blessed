@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { commerce } from '../../lib/commerce';
 import styled from 'styled-components';
 import { Container } from '../styles'
 
 import ProductImages from './ProductImages';
 import ProductInfo from './ProductInfo';
 import Loader from '../Loader'
+import { db } from '../../lib/Config';
 
 const Details = () => {
     const { id } = useParams();
@@ -15,17 +15,18 @@ const Details = () => {
 
     useEffect(() => {
 
-        commerce.products.retrieve(id).then((result) => setProduct(result));
+        db.collection("products").doc(id).get().then((result) => setProduct(result.data()));
         
-    },[]) // eslint-disable-line react-hooks/exhaustive-deps
+    },[]) 
+
     return (
         <DetailContainer>
             {!product && <Loader></Loader>}
 
             <Gallery>
-                {product && <ProductImages assets={product.assets}/>}
+                {product && <ProductImages assets={product.Images}/>}
             </Gallery>
-            {product && <ProductInfo {...product} />}
+            {product && <ProductInfo id={product.id} name={product.Name} price={product.Price} description={product.Description} />}
         </DetailContainer>
     )
 }

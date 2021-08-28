@@ -12,7 +12,7 @@ const ProductImages = ({ assets }) => {
     
     return (
         <Image>
-            <img src={assets[index].url} alt="" />
+            <img src={assets[index]} alt="" />
             {index > 0 && (
                 <button onClick={prevImage} style={{left: 'calc(15% + 20px)'}}>
                 <svg width="24" height="28" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
