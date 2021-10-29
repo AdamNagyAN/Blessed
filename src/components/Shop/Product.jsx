@@ -13,7 +13,7 @@ const Product = ({ id, name, price, image }) => {
                 <div className="product-card-info">
                     <span className="name">{name}</span>
                     <span className="size">XXL</span>
-                    <span className="price">{`${price}`}</span>
+                    <span className="price">{`₴${price}`}</span>
                 </div>        
         </Link>
     )

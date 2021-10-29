@@ -6,7 +6,7 @@ import { commerce } from '../../lib/commerce'
 const Cart = () => {
     const [cart, setCart] = useState(null)
     useEffect(() => {
-        commerce.cart.contents().then((items) => console.log(items));
+        
     }, [])
     return (
         <Container>

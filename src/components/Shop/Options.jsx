@@ -7,7 +7,8 @@ const Options = ({ categories }) => {
                 <h2>Categories</h2>
                 <ul>
                     {}
-                    <li><input type="checkbox" id="scales" name="scales"/><label htmlFor="scales">Scales</label></li>
+                    <li><Label><CheckBox type="checkbox" id="scales" name="scales" /><span>Stlye</span></Label></li>
+                    <li><Label><CheckBox type="checkbox" id="scales" name="scales" /><span>Stlye</span></Label></li>
                     
                 </ul>
                 <hr />
@@ -24,4 +25,17 @@ const Options = ({ categories }) => {
     )
 }
 
+const Label = styled.label`
+    display: flex;
+    align-items: center;
+`
+const CheckBox = styled.input`
+    appearance: none;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 3px;
+    border: 1px solid rgb(139,139,139);
+    margin: 0 0.3rem;
+    input[type="checkbox" i]
+`
 export default Options

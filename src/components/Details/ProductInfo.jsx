@@ -1,6 +1,5 @@
-import React,{ useState } from 'react'
-import styled from 'styled-components'
-import { commerce } from '../../lib/commerce';
+import React,{ useState } from 'react';
+import styled from 'styled-components';
 
 const ProductInfo = ({ id, name, price, description }) => {
 
