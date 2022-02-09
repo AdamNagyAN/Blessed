@@ -1,113 +1,91 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Counter from '../Counter';
+import { connect } from 'react-redux'
+import Select from 'react-select';
 
-const ProductInfo = ({ id, name, price, description }) => {
+import Message from '../Message';
+import { addToCart } from '../../redux/Cart/cart-actions';
 
+
+const ProductInfo = ({ id, item, addToCart, cart }) => {
+    const [msg, setMsg] = useState(null);
     const [counter, setCounter] = useState(1)
-
-
-
+    const sizes = Object.keys(item.Sizes).map(key => ({ label: key, value: key }));
+    console.log(sizes);
+    const exists = cart.find(cartItem => cartItem.id === id) ? "This product is already in your shopping cart!" : "Product added to shopping cart!";
     return (
         <InfoContainer>
-            <Title>{name}</Title>
-            <Price>{price} UAH</Price>
-            <Description>{description}</Description>
-            <CounterElement>
-                <button onClick={() => setCounter(prev => (prev>1 ? prev-1 : 1)) }>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.33333 8H12.6667" stroke="rgb(139,139,139)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-                <span>{counter}</span>
-                <button onClick={() => setCounter(prev => (prev<10 ? prev+1 : 10))}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 3.33334V12.6667" stroke="rgb(139,139,139)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M3.33333 8H12.6667" stroke="rgb(139,139,139)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-            </CounterElement>
-            <Button>Add to cart</Button>
+            <Title>{item.Name}</Title>
+            <Price>{item.Price} UAH</Price>
+            <Description>{item.Description}</Description>
+            <Counter inc={() => setCounter(prev => (prev < 10 ? prev + 1 : 10))} dec={() => setCounter(prev => (prev > 1 ? prev - 1 : 1))} counter={counter} />
+            <Select style={{ "width": "130px" }} options={sizes} />
+            <Button onClick={() => { addToCart({ id, ...item, qty: counter }); setMsg(exists) }}>Add to cart</Button>
+            <Message msg={msg} />
         </InfoContainer>
     )
 }
 
 const InfoContainer = styled.div`
-    width: 40%;
-    margin: 20px auto;
-    padding: 20px;
-    @media (max-width: 750px){
-        width:80%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+            width: 40%;
+            margin: 20px auto;
+            padding: 20px;
+            @media (max-width: 750px){
+                width:80%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
     }
-`
+            `
 const Title = styled.h1`
-    color: rgba(139,139,139);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 1.8rem;
-`
+            color: rgba(139,139,139);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.8rem;
+            `
 
 const Price = styled.h2`
-    color: rgba(139,139,139);
-    font-weight: 500;
-    font-size: 1.4rem;
-    margin: 20px 0;
-`
-
-const CounterElement = styled.div` 
-    border: 1px solid rgb(139,139,139);
-    color: rgb(139,139,139);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: fit-content;
-    margin: 50px 0;
-    font-size: 1.3rem;
-    height: 40px;
-    button{
-        border: none;
-        background: transparent;
-        padding-top: 4px;
-        cursor: pointer;
-        width: 40px;
-    }
-    span{
-        text-align: center;
-        margin: 0;
-        width: 40px;
-    }
-`
+            color: rgba(139,139,139);
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin: 20px 0;
+            `
 
 const Description = styled.div`
-    color: rgba(139,139,139);
-    margin: 20px 0;
-    font-size: 1.3rem;
-`
+            color: rgba(139,139,139);
+            margin: 20px 0;
+            font-size: 1.3rem;
+            `
 
 const Button = styled.button`
-    outline: none;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    font-weight: 700;
-    color: rgb(20,20,20);
-    background: white;
-    border: 1px solid rgb(20,20,20);
-    transition: all 0.1s ease-in;
-    width: 100%;
-    &:hover{
-        color: white;
-        background: rgb(20,20,20);
-        border: 1px solid rgb(20,20,20);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            color: rgb(20,20,20);
+            background: white;
+            border: 1px solid rgb(20,20,20);
+            transition: all 0.1s ease-in;
+            width: 100%;
+            &:hover{
+                color: white;
+            background: rgb(20,20,20);
+            border: 1px solid rgb(20,20,20);
     }
-`
+            `
+
+const mapDispatchToProps = dispach => ({
+    addToCart: item => dispach(addToCart(item))
+})
+
+const mapStateToProps = ({ shop: { cart } }) => ({
+    cart: cart
+})
 
 
-
-
-export default ProductInfo
+export default connect(mapStateToProps, mapDispatchToProps)(ProductInfo);

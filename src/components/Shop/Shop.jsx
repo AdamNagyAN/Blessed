@@ -8,10 +8,10 @@ import Options from './Options'
 
 const Shop = () => {
     const [list, setList] = useState(null);
-    const [categories, setCategories] = useState(null)
+    // const [categories, setCategories] = useState(null)
     const [categoriesList, setCategoriesList] = useState(null)
 
-    const fetchProducts = async (limit) =>{
+    const fetchProducts = async (limit) => {
         await db.collection("products").limit(limit).onSnapshot(snapshop => {
             setList(
                 snapshop.docs.map(doc => ({
@@ -35,15 +35,14 @@ const Shop = () => {
     useEffect(() => {
         fetchProducts(10);
         fetchCategories()
-        console.log(categoriesList);
     }, [])
-    
+
     return (
         <Container className='container'>
             <Options />
-            <div className="products" style={{position: 'relative'}}>
-                { list ? list.map(({ id, Name, Price, CoverImg }) => (
-                <Product key={id} id={id} name={Name} price={Price} image={CoverImg}/>
+            <div className="products" style={{ position: 'relative' }}>
+                {list ? list.map((item) => (
+                    <Product key={item.id} item={item} />
                 )) : (<Loader />)}
             </div>
         </Container>

@@ -14,10 +14,11 @@ function App() {
       <GlobalStyle />
       <Header />
       <Switch>
-        
+
         <Route path="/" exact component={Home} />
         <Route path="/shop" exact component={Shop} />
         <Route path="/cart" exact component={Cart} />
+        <Route path="/favourite" exact component={Cart} />
         <Route path="/shop/:id" component={Details} />
         <Route component={Home} />
       </Switch>
