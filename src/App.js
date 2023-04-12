@@ -14,7 +14,6 @@ function App() {
       <GlobalStyle />
       <Header />
       <Switch>
-
         <Route path="/" exact component={Home} />
         <Route path="/shop" exact component={Shop} />
         <Route path="/cart" exact component={Cart} />

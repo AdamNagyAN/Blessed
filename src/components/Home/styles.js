@@ -5,10 +5,7 @@ const darkGrey = 'rgb(20, 20, 20)'
 export const HeroDiv = styled.div`
     position: relative;
     width: 100%;
-    img {
-        width: 100%;
-        object-fit: cover;
-    }
+    height: fit-content;
     @media (max-width: 750px){
         margin-top: 60px;
     }

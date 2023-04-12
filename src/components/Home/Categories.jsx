@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from './styles'
+import ImageWithSkeleton from "../atoms/ImageWithSkeleton";
 const Categories = () => {
     return (
         <CategoryContainer>
             <Card style={{gridArea: 'a'}}>
-                <img src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
+                <ImageWithSkeleton aspectRatio={"4 / 5"} src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
                 <CardTitle>Men</CardTitle>
                 <Button to='/shop'>Go to shop</Button>
             </Card>
             <Card style={{gridArea: 'b'}}>
-                <img src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
+                <ImageWithSkeleton aspectRatio={"4 / 5"} src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
                 <CardTitle>Women</CardTitle>
                 <Button to='/shop'>Go to shop</Button>
             </Card>
             <Card style={{gridArea: 'c'}}>
-                <img src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
+                <ImageWithSkeleton aspectRatio={"4 / 5"} src="https://cdn.shopify.com/s/files/1/2406/5155/products/Untitleddesign-2021-06-02T085309.190_400x.png?v=1622653463" alt="" />
                 <CardTitle>Summer</CardTitle>
                 <Button to='/shop'>Go to shop</Button>
             </Card>

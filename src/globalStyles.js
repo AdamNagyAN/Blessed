@@ -11,6 +11,19 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
     font-family: "Montserrat", sans-serif;
+      
+    }
+    #root{
+      
+    }
+    .App {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    footer {
+      margin-top: auto;
     }
     a {
     text-decoration: none;
